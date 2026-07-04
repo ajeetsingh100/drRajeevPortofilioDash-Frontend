@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addTestimonial, deleteVideo } from '../services/operation/testimonialAPI'
 import { apiconnector } from '../services/apiconnector'
 import { Button, Modal } from 'react-bootstrap'
+import { SERVER_API } from '../services/api'
 
 const ManageVideoTestimonial = () => {
     const {register,handleSubmit,formState:{errors},reset}=useForm()
@@ -22,7 +23,7 @@ const ManageVideoTestimonial = () => {
         dispatch(addTestimonial(videoId.at(-1)))
     }
     async function loadVideoTestimonial(){
-        const response=await apiconnector('get','http://localhost:4000/api/v1/testimonial/get-all-testimonial')
+        const response=await apiconnector('get',`${SERVER_API.MAIN_SERVER}/api/v1/testimonial/get-all-testimonial`)
         setVideoTestimonial(response.data.allTestimonial)
     }
       function handleOpen(videoId){

@@ -24,7 +24,7 @@ export const deleteVideo=(id,setDeleteShow)=>{
     return async(dispatch)=>{
         dispatch(setLoading(true))
         try {
-            await apiconnector("delete",`http://localhost:4000/api/v1/testimonial/delete-video?id=${id}`)
+            await apiconnector("delete",`${SERVER_API.MAIN_SERVER}/api/v1/testimonial/delete-video?id=${id}`)
             toast.success('video deleted successfully')
             setDeleteShow(false)
         } catch (error) {
