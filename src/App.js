@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import DashboardLayout from './components/Dashboard/DashboardLayout';
+import BlogEditor from './pages/BlogEditor';
+import ManageSlider from './pages/ManageSlider';
+import ManageVideoTestimonial from './pages/ManageVideoTestimonial';
+import { Toaster } from 'react-hot-toast';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Toaster position="top-center" reverseOrder={false} />
+      <Routes>
+        <Route path="/" element={<DashboardLayout/>}>
+          <Route index element={<ManageSlider/>}/>
+          <Route path="create-blog" element={<BlogEditor/>}/>
+         
+         <Route path="manage-video-testimonial" element={<ManageVideoTestimonial/>}/>
+        </Route>
+      </Routes>
     </div>
   );
 }
